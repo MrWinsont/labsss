@@ -8,32 +8,11 @@ int main()
     int str, sto;
     cout << "enter the number of rows and columns"<<endl;
     cin >> str >> sto;
-    for (int i = 0; i < str; i++) {//создание марицы
-        for (int j = 0; j < sto; j++) {
-            cin >> mat[i][j];
-        }
+    vg::newmat(mat, str, sto);//создание матрицы
+    vg::vivod(mat, str, sto);//вывод введенной матрицы
+    cout << endl;
+    if (vg:: sumdig(vg::max(mat, str, sto)) == vg::sumdig(vg::min(mat, str, sto))) {//сортировка матрицы
+        vg::swap(mat, str, sto);
     }
-    vivod(mat, str, sto);//вывод введенной матрицы
-
-    //проверка функций
-
-    /*cout << "max = " << max(mat, str, sto) << endl;
-    cout << "min = " << min(mat, str, sto) << endl;
-    cout << "summax = " << sumdig(max(mat, str, sto)) << endl;
-    cout << "summin = " << sumdig(min(mat, str, sto)) << endl;
-    cout << "sumstr = " <<sums(mat,0,sto) << endl;*/
-    
-    
-    if (sumdig(max(mat, str, sto)) == sumdig(min(mat, str, sto))) {//сортировка матрицы
-        for (int i = 0; i < str; i++) {
-            for (int j = i+1; j < str; j++) {
-                if (sums(mat, j, sto) < sums(mat, i, sto)) {
-                    for (int k = 0; k < sto; k++) {
-                        swap(mat[j][k], mat[i][k]);
-                    }
-                }
-            }
-        }
-    }
-    vivod(mat, str, sto);//вывод новой матрицы
+    vg::vivod(mat, str, sto);//вывод новой матрицы
 }
